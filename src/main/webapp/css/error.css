@@ -1,0 +1,35 @@
+/* error.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f8d7da;
+    color: #721c24;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h2 {
+    margin-top: 50px;
+    font-size: 28px;
+}
+
+p {
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    background: #721c24;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+a:hover {
+    background: #501217;
+}

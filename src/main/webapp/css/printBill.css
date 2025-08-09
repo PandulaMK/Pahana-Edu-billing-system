@@ -1,0 +1,82 @@
+/* printBill.css — screen + print styles for invoices */
+
+/* Base (screen) */
+body {
+  font-family: Arial, sans-serif;
+  background: #f6f7f9;
+  color: #111827;
+  margin: 0;
+}
+
+.bill-container {
+  width: 900px;
+  max-width: 95%;
+  margin: 24px auto;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  padding: 24px;
+}
+
+.bill-header {
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 2px solid #e5e7eb; padding-bottom: 12px; margin-bottom: 16px;
+}
+.bill-title { font-size: 22px; font-weight: 800; color: #0d6efd; }
+.bill-meta { text-align: right; font-size: 14px; color: #4b5563; }
+
+.bill-party {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;
+}
+.bill-party .block { background:#f9fafb; border:1px solid #edf2f7; padding:12px; border-radius:8px; }
+
+.items {
+  width: 100%; border-collapse: collapse; margin-top: 6px;
+}
+.items th, .items td {
+  border: 1px solid #e5e7eb;
+  padding: 10px;
+  text-align: left;
+}
+.items thead th {
+  background: #0d6efd; color: #fff; font-weight: 700;
+}
+.items tfoot td { font-weight: 700; }
+
+.text-right { text-align: right; }
+.note { margin-top: 16px; color: #6b7280; }
+
+/* Buttons/links that should not print */
+.no-print {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  background: #0d6efd; color: #fff;
+}
+.no-print:hover { background:#0b5ed7; }
+
+/* Print rules */
+@media print {
+  @page { size: A4; margin: 12mm; }
+
+  html, body { background: #fff; }
+  body { margin: 0; }
+
+  /* Hide header/footer from layout on print pages */
+  header, footer, .no-print { display: none !important; }
+
+  .bill-container {
+    box-shadow: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    max-width: none;
+  }
+
+  .bill-title { color: #000; }
+  .bill-party .block { background: transparent; border-color: #e5e7eb; }
+  .items thead th { background: #e5e7eb; color: #000; }
+}
