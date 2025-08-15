@@ -1,0 +1,257 @@
+/* ==========================================================================
+   Pahana Billing – Light Theme (v2)
+   - Clean, accessible light UI
+   - Dark text on inputs (fixes “white text” issues)
+   - Consistent spacing, hover, and focus states
+   ========================================================================== */
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --bg:            #f5f7fb;   /* app background */
+  --surface:       #ffffff;   /* cards/forms/tables */
+  --surface-2:     #f1f5f9;   /* subtle headers/rows */
+  --border:        #e2e8f0;   /* separators */
+  --text:          #0f172a;   /* main text (slate-900) */
+  --text-muted:    #475569;   /* slate-600 */
+  --accent:        #2563eb;   /* blue-600 */
+  --accent-600:    #1d4ed8;
+  --accent-50:     #eff6ff;
+  --success:       #16a34a;   /* green-600 */
+  --success-50:    #ecfdf5;
+  --danger:        #ef4444;   /* red-500 */
+  --danger-600:    #dc2626;
+  --danger-50:     #fef2f2;
+  --shadow:        0 8px 28px rgba(2, 6, 23, 0.08);
+  --radius:        14px;
+  --radius-sm:     10px;
+  --space:         16px;
+  --space-lg:      24px;
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- Header / Topbar ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px var(--space-lg);
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 12px rgba(2, 6, 23, 0.04);
+}
+.topbar .brand a {
+  font-weight: 800; letter-spacing: .2px;
+  color: var(--text);
+}
+.topbar .brand span { color: var(--accent); }
+.topbar .nav a {
+  color: var(--text-muted);
+  margin-left: 14px;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+.topbar .nav a:hover { background: var(--surface-2); color: var(--text); }
+.topbar .nav .logout { color: var(--danger); }
+
+/* ---------- Layout ---------- */
+.container { max-width: 1100px; margin: var(--space-lg) auto; padding: 0 var(--space); }
+
+.page-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin: 10px 0 var(--space);
+}
+.page-header h2 { margin: 0; font-size: 22px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  transition: transform .12s ease, background .12s ease, border-color .12s ease, box-shadow .12s ease;
+}
+.btn:hover { background: var(--surface-2); transform: translateY(-1px); }
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 700;
+}
+.btn.primary:hover { background: var(--accent-600); border-color: var(--accent-600); }
+.btn.danger {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+  font-weight: 700;
+}
+.btn.danger:hover { background: var(--danger-600); border-color: var(--danger-600); }
+.btn.outline {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+.btn[disabled], .btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+/* ---------- Cards & Grids ---------- */
+.card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  text-decoration: none;
+}
+.card h3 { margin: 0 0 6px; font-size: 18px; }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: var(--space);
+}
+
+/* ---------- Forms ---------- */
+.form-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space);
+  box-shadow: var(--shadow);
+  max-width: 720px;
+}
+.form-card label { display: block; margin: 10px 0 12px; font-size: 14px; color: var(--text); }
+.form-card input, .form-card select, .form-card textarea {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: #fff;           /* ensure readable background */
+  color: var(--text);          /* dark text so values are visible */
+  -webkit-text-fill-color: var(--text); /* autofill fix (Chrome) */
+}
+.form-card input::placeholder { color: #94a3b8; }
+.form-card input:focus, .form-card select:focus, .form-card textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-50);
+}
+.form-actions { margin-top: var(--space); display: flex; gap: 10px; }
+
+/* Handle Chrome autofill background */
+.form-card input:-webkit-autofill,
+.form-card input:-webkit-autofill:hover,
+.form-card input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--text);
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  box-shadow: inset 0 0 0 1000px #fff;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* ---------- Tables ---------- */
+.table-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+table { width: 100%; border-collapse: collapse; }
+thead th {
+  background: var(--surface-2);
+  color: var(--text-muted);
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+tbody td {
+  padding: 12px 14px;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+}
+tbody tr:hover { background: #fafbff; }
+.col-actions .table-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Responsive table scroll */
+@media (max-width: 720px) {
+  .table-card { overflow-x: auto; }
+  table { min-width: 640px; }
+}
+
+/* ---------- Flash messages ---------- */
+.flash {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  margin: 12px 0;
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.flash.success {
+  border-color: #10b98133;
+  background: var(--success-50);
+  color: var(--text);
+}
+.flash.error {
+  border-color: #ef444433;
+  background: var(--danger-50);
+  color: var(--danger-600);
+}
+
+/* ---------- Bills ---------- */
+.bill-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space);
+  box-shadow: var(--shadow);
+}
+.bill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  text-align: center;
+  padding: var(--space-lg);
+  color: var(--text-muted);
+}
+
+/* ---------- Utilities ---------- */
+.hidden { display: none !important; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); border: 0;
+}
+
+/* ---------- Print style (for printBill.jsp) ---------- */
+@media print {
+  body { background: #fff; }
+  .topbar, .footer, .btn, .page-header { display: none !important; }
+  .bill-card { box-shadow: none; border: 0; padding: 0; }
+  .container { max-width: 100%; margin: 0; padding: 0; }
+}
