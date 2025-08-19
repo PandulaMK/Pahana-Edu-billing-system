@@ -1,6 +1,6 @@
 </main>
 <footer class="footer">
-  <p>Â© 2025 Pahana Bookshop</p>
+  <p>© Pandula Mahesh 2025 Pahana Bookshop</p>
 </footer>
 </body>
 </html>

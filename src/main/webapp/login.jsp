@@ -9,7 +9,7 @@
 </head>
 <body class="login-page">
   <div class="login-card">
-    <h2>Sign in</h2>
+    <h2>Pahana Edu Book Shop</h2>
     <c:if test="${not empty error}"><div class="flash error">${error}</div></c:if>
     <form method="post" action="${pageContext.request.contextPath}/login">
       <label>Username
